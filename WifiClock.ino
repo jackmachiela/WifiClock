@@ -1,12 +1,10 @@
-
-
-
-// Skeleton Code for Jack Machiela. Has basic WiFi and correct NTP settings. Also a ton of comments that should be removed when implemented.
+//
+// Code by Jack Machiela.
 //
 
-#include <WiFiManager.h>          // Using the Arduino Library Manager, install "WifiManager by tzapu" - lib at https://github.com/tzapu/WiFiManager
-#include <ezTime.h>               // lib at https://github.com/ropg/ezTime, docs at https://awesomeopensource.com/project/ropg/ezTime
-#include <TM1637Display.h>        // Using Avishay Orpaz's TM1637 library to address the LCD display
+#include <WiFiManager.h>          // Library "WifiManager by tablatronix" - Tested at v2.0.3-alpha (aka "WifiManager by tzapu" - lib at https://github.com/tzapu/WiFiManager)
+#include <ezTime.h>               // Library "EZTime by Rop Gonggrijp" - Tested at v0.8.3 (lib & docs at https://github.com/ropg/ezTime, docs at https://awesomeopensource.com/project/ropg/ezTime
+#include <TM1637Display.h>        // Library "TM1637 by Avishay Orpaz" - Tested at v1.2.0
 
 
 // Define some wibbley wobbley timey wimey stuff
@@ -44,7 +42,7 @@ time_t prevDisplay = 0; // when the digital clock was last displayed
 
 
 void setup() {
-  Serial.begin(74880);                                       
+  Serial.begin(115200);                                       // was 74880
   pinMode(redLedPin, OUTPUT);
 
   digitalWrite(redLedPin, HIGH);
