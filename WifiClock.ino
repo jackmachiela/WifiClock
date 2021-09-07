@@ -1,5 +1,5 @@
 //
-// Code by Jack Machiela...
+// Code by Jack Machiela....
 //
 
 #include <WiFiManager.h>          // Library "WifiManager by tablatronix" - Tested at v2.0.3-alpha (aka "WifiManager by tzapu" - lib at https://github.com/tzapu/WiFiManager)
