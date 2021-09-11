@@ -27,7 +27,7 @@ int LDRPin = A0;           // The pin to read the LDR
 bool showDots = 1;         // Toggles every second
 
 
-const uint8_t SEG_LAN[] = {                        // A bit unwieldy, but this bit sets up the alphanumeric "LAN-" display at clock boot time
+const uint8_t SEG_LAN[] = {                        // This part is a bit unwieldy, but it sets up the alphanumeric "LAN-" display at clock boot time
   SEG_D | SEG_E | SEG_F,                           // L
   SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G,   // A
   SEG_A | SEG_B | SEG_C | SEG_E | SEG_F,           // N
