@@ -2,7 +2,7 @@
 // Code by Jack Machiela......
 //
 
-#include <WiFiManager.h>          // Library "WifiManager by tablatronix" - Tested at v2.0.3-alpha (aka "WifiManager by tzapu" - lib at https://github.com/tzapu/WiFiManager)
+#include <WiFiManager.h>          // Library "WifiManager by tablatronix" - Tested at v2.0.15-rc.1 (aka "WifiManager by tzapu" - lib at https://github.com/tzapu/WiFiManager)
 #include <ezTime.h>               // Library "EZTime by Rop Gonggrijp" - Tested at v0.8.3 (lib & docs at https://github.com/ropg/ezTime, docs at https://awesomeopensource.com/project/ropg/ezTime
 #include <TM1637Display.h>        // Library "TM1637 by Avishay Orpaz" - Tested at v1.2.0
 
@@ -15,8 +15,8 @@ Timezone myTimeZone;                                 // Define this as a global 
 
 
 // Define where the Display is located
-const int CLK = D2; //Set the CLK pin connection to the display
-const int DIO = D3; //Set the DIO pin connection to the display
+const int CLK = D2; //Set the CLK pin connection to the display         // D2 for NodeMCU & Mini D1 Pro
+const int DIO = D3; //Set the DIO pin connection to the display         // D3 for NodeMCU & Mini D1 Pro
 
 TM1637Display display(CLK, DIO); //set up the 4-Digit Display.
 
@@ -28,11 +28,11 @@ bool showDots = 1;         // Toggles every second
 
 
 const uint8_t SEG_LAN[] = {                        // This part is a bit unwieldy, but it sets up the alphanumeric "LAN-" display at clock boot time
-  SEG_D | SEG_E | SEG_F,                           // L
-  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G,   // A
-  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F,           // N
-  SEG_G                                            // -
-  };
+  SEG_D | SEG_E | SEG_F,                           // L            A     -
+  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G,   // A           F B   | |
+  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F,           // N            G     -
+  SEG_G                                            // -           E C   | |
+  };                                               //              D     -
 
 int redLedPin    = D7;                  // Using an LED to show some error conditions
 
@@ -52,7 +52,7 @@ void setup() {
   delay(500);                        // ...for half a second. If wifi fails, it will stay on screen much longer.
 
   WiFiManager wifiManager;             // Start a Wifi link
-  wifiManager.autoConnect("");         //   (on first use: will set up as a Wifi name; set up by selecting new Wifi network on iPhone for instance)
+  wifiManager.autoConnect("WifiClock");         //   (on first use: will set up as a Wifi name; set up by selecting new Wifi network on iPhone for instance)
 
   setInterval(30);                     // [Optional] - How often should the time be reset to NTP server
   setDebug(INFO);                      // [Optional] - Print some info to the Serial monitor
